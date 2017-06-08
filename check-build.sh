@@ -7,7 +7,7 @@ module add cmake
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 
-make test
+#make test
 
 echo $?
 
