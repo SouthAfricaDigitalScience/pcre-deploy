@@ -46,6 +46,8 @@ cmake ../ -G"Unix Makefiles" \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
-  -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so
+  -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
+  --enable-pcre2grep-libz
+  --enable-pcre2grep-libbz2
 
 make
