@@ -40,9 +40,9 @@ cmake ../ -G"Unix Makefiles" \
   -DPCRE2_BUILD_PCRE2_32=ON \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
   -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
-  -DREADLINE_INCLUDE_DIR=${NCURSES_DIR}/include \
-  -DREADLINE_LIBRARY=${NCURSES_DIR}/lib/libncurses.so \
+  -DREADLINE_INCLUDE_DIR="${READLINE_DIR}/include" \
+  -DREADLINE_LIBRARY="${READLINE_DIR}/lib/libreadline.so" \
   -DPCRE2_SUPPORT_LIBREADLINE=ON \
   -DPCRE2_SUPPORT_LIBBZ2=ON
 
-make
+LDFLAGS="-L${NCURSES_DIR}/lib -lncurses" make
