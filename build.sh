@@ -39,7 +39,7 @@ cmake ../ -G"Unix Makefiles" \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
-  -DBZIP2_LIBRARY=${BZLIB_DIR}/lib/libbz2.so \
+  -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
   -DNCURSES_LIBRARY=${NCURSES_DIR}/lib/libncurses.so \
   -DNCURSES_INCLUDE_DIR=${NCURSES_DIR}/include \
   -DREADLINE_INCLUDE_DIR="${READLINE_DIR}/include" \
