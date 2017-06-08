@@ -2,7 +2,6 @@
 . /etc/profile.d/modules.sh
 module avail
 module add ci
-module add zlib
 module add  bzip2
 module add readline
 module add  cmake
@@ -47,7 +46,6 @@ cmake .. \
   -DBUILD_SHARED_LIBS=ON \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
-  -DZLIB_INCLUDE_DIR=${ZLIB_DIR}/include -DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/libz.so \
-  -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so
+  -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \ -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so
 
 make

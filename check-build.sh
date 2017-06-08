@@ -1,7 +1,6 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
 module add ci
-module add zlib
 module add bzip2
 module add readline
 module add cmake
