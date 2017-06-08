@@ -35,8 +35,8 @@ prepend-path LDFLAGS           "-L${PCRE2_DIR}/lib"
 MODULE_FILE
 ) > modules/$VERSION
 
-mkdir -vp ${LIBRARIES_MODULES}/${NAME}
-cp -v modules/$VERSION ${LIBRARIES_MODULES}/${NAME}
+mkdir -vp ${LIBRARIES}/${NAME}
+cp -v modules/$VERSION ${LIBRARIES}/${NAME}
 
 module avail ${NAME}
 
