@@ -4,18 +4,10 @@ module avail
 module add ci
 module add  bzip2
 module add readline
+module  add  ncurses
 module add  cmake
 
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
-whoami
-echo "REPO_DIR is "
-echo $REPO_DIR
-echo "SRC_DIR is "
-echo $SRC_DIR
-echo "WORKSPACE is "
-echo $WORKSPACE
-echo "SOFT_DIR is"
-echo $SOFT_DIR
 
 mkdir -p ${WORKSPACE}
 mkdir -p ${SRC_DIR}
@@ -43,11 +35,15 @@ mkdir -p ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cmake ../ -G"Unix Makefiles" \
   -DBUILD_SHARED_LIBS=ON \
+  -DBUILD_STATIC_LIBS=ON \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
   -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
-  --enable-pcre2grep-libz
-  --enable-pcre2grep-libbz2
+  -DREADLINE_INCLUDE_DIR=${NCURSES_DIR}/include \
+  -DREADLINE_LIBRARY=${NCURSES_DIR}/lib/libncurses.so \
+  -DPCRE2_SUPPORT_LIBZ=ON \
+  -DPCRE2_SUPPORT_LIBREADLINE=ON \
+  -DPCRE2_SUPPORT_LIBBZ2=ON
 
 make

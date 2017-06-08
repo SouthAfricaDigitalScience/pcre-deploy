@@ -5,6 +5,7 @@ module add deploy
 module add  zlib
 module add bzip2
 module add readline
+module  add  ncurses
 module add cmake
 
 echo ${SOFT_DIR}
@@ -12,15 +13,17 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
-cmake .. \
- -G"Unix Makefiles" \
+cmake ../ -G"Unix Makefiles" \
   -DBUILD_SHARED_LIBS=ON \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
-  -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so\
-  --enable-pcre2grep-libz
-  --enable-pcre2grep-libbz2
+  -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
+  -DREADLINE_INCLUDE_DIR=${READLINE_DIR}/include \
+  -DREADLINE_LIBRARY=${READLINE_DIR}/lib/libreadline.so \  
+  -DPCRE2_SUPPORT_LIBZ=ON \
+  -DPCRE2_SUPPORT_LIBREADLINE=ON \
+  -DPCRE2_SUPPORT_LIBBZ2=ON
 
 make install
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"

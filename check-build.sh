@@ -3,6 +3,7 @@
 module add ci
 module add bzip2
 module add readline
+module  add ncurses
 module add cmake
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
