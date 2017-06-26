@@ -2,10 +2,10 @@
 . /etc/profile.d/modules.sh
 module avail
 module add ci
-module add  bzip2
+module add bzip2
 module add readline
-module  add  ncurses
-module add  cmake
+module add ncurses
+module add cmake
 
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
@@ -48,4 +48,4 @@ cmake ../ -G"Unix Makefiles" \
   -DPCRE2_SUPPORT_LIBREADLINE=ON \
   -DPCRE2_SUPPORT_LIBBZ2=ON
 
-LDFLAGS="-L${NCURSES_DIR}/lib -lncurses" make
+LDFLAGS="-L${NCURSES_DIR}/lib -lncurses -lreadline  -ltermcap" make
