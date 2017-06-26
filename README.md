@@ -23,6 +23,7 @@ This project depends on
 ```
 cmake .. \
  -G"Unix Makefiles" \
+  -DCMAKE_INSTALL_PREFIX=$SOFT_DIR \
   -DBUILD_SHARED_LIBS=ON \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \

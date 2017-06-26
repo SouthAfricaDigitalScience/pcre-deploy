@@ -14,6 +14,7 @@ echo "All tests have passed, will now build into ${SOFT_DIR}"
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cmake ../ -G"Unix Makefiles" \
+  -DCMAKE_INSTALL_PREFIX=$SOFT_DIR \
   -DBUILD_SHARED_LIBS=ON \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
