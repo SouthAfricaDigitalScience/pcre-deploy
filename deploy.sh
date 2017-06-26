@@ -27,8 +27,8 @@ cmake ../ -G"Unix Makefiles" \
   -DPCRE2_SUPPORT_LIBBZ2=ON
 
 make install
-echo "Creating the modules file directory ${LIBRARIES_MODULES}"
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+echo "Creating the modules file directory ${LIBRARIES}"
+mkdir -p ${LIBRARIES}/${NAME}
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -47,4 +47,7 @@ prepend-path GCC_INCLUDE_DIR   $::env(PCRE2_DIR)/include
 prepend-path CFLAGS            "-I${PCRE2_DIR}/include"
 prepend-path LDFLAGS           "-L${PCRE2_DIR}/lib"
 MODULE_FILE
-) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+) > ${LIBRARIES}/${NAME}/${VERSION}
+
+module avail ${NAME}
+module add ${NAME}/${VERSION}
