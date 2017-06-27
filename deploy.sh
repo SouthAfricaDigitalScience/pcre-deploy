@@ -2,7 +2,6 @@
 # this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 module add deploy
-module add  zlib
 module add bzip2
 module add readline
 module  add  ncurses
@@ -25,11 +24,11 @@ cmake ../ -G"Unix Makefiles" \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
   -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
   -DNCURSES_LIBRARY=${NCURSES_DIR}/lib/libncurses.so \
-  -DNCURSES_INCLUDE_DIR=${NCURSES_DIR}/include \
   -DREADLINE_INCLUDE_DIR="${READLINE_DIR}/include" \
   -DREADLINE_LIBRARY="${READLINE_DIR}/lib/libreadline.so ${NCURSES_DIR}/lib/ncurses.so" \
   -DPCRE_SUPPORT_LIBREADLINE=OFF \
-  -DPCRE_SUPPORT_LIBBZ2=ON
+  -DPCRE_SUPPORT_LIBBZ2=ON \
+  -DPCRE_SUPPORT_UTF=ON
 
 make install
 echo "Creating the modules file directory ${LIBRARIES}"

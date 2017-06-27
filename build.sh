@@ -50,6 +50,7 @@ cmake ../ -G"Unix Makefiles" \
   -DREADLINE_INCLUDE_DIR="${READLINE_DIR}/include" \
   -DREADLINE_LIBRARY="${READLINE_DIR}/lib/libreadline.so ${NCURSES_DIR}/lib/ncurses.so" \
   -DPCRE_SUPPORT_LIBREADLINE=OFF \
-  -DPCRE_SUPPORT_LIBBZ2=ON
+  -DPCRE_SUPPORT_LIBBZ2=ON \
+  -DPCRE_SUPPORT_UTF=ON
 
  make
