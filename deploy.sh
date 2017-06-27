@@ -14,18 +14,22 @@ echo "All tests have passed, will now build into ${SOFT_DIR}"
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cmake ../ -G"Unix Makefiles" \
+  -DCMAKE_EXE_LINKER_FLAGS_DEBUG="-L${NCURSES_DIR}/lib -L${READLINE_DIR} -lreadline -lncurses  " \
+  -DCMAKE_C_FLAGS="-I${READLINE_DIR}/include  -I${NCURSES_DIR}/include " \
+  -DCMAKE_SHARED_LINKER_FLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR}/lib -lreadline -lncurses -lhistory -ltinfo" \
   -DCMAKE_INSTALL_PREFIX=$SOFT_DIR \
   -DBUILD_SHARED_LIBS=ON \
+  -DBUILD_STATIC_LIBS=ON \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
   -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
-  -DREADLINE_INCLUDE_DIR=${READLINE_DIR}/include \
-  -DREADLINE_LIBRARY=${READLINE_DIR}/lib/libreadline.so \
-  -DPCRE2_SUPPORT_LIBZ=ON \
-  -DPCRE2_SUPPORT_LIBREADLINE=ON \
+  -DNCURSES_LIBRARY=${NCURSES_DIR}/lib/libncurses.so \
+  -DNCURSES_INCLUDE_DIR=${NCURSES_DIR}/include \
+  -DREADLINE_INCLUDE_DIR="${READLINE_DIR}/include" \
+  -DREADLINE_LIBRARY="${READLINE_DIR}/lib/libreadline.so ${NCURSES_DIR}/lib/ncurses.so" \
+  -DPCRE2_SUPPORT_LIBREADLINE=OFF \
   -DPCRE2_SUPPORT_LIBBZ2=ON
-
 make install
 echo "Creating the modules file directory ${LIBRARIES}"
 mkdir -p ${LIBRARIES}/${NAME}
