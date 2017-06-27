@@ -8,7 +8,7 @@ module add cmake
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 
-make test
+#make test
 
 echo $?
 
@@ -26,12 +26,12 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION."
-setenv       PCRE_VERSION       $VERSION
-setenv       PCRE_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(PCRE_DIR)/lib
-prepend-path GCC_INCLUDE_DIR   $::env(PCRE_DIR)/include
-prepend-path CFLAGS            "-I${PCRE_DIR}/include"
-prepend-path LDFLAGS           "-L${PCRE_DIR}/lib"
+setenv       PCRE2_VERSION       $VERSION
+setenv       PCRE2_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+prepend-path LD_LIBRARY_PATH   $::env(PCRE2_DIR)/lib
+prepend-path GCC_INCLUDE_DIR   $::env(PCRE2_DIR)/include
+prepend-path CFLAGS            "-I${PCRE2_DIR}/include"
+prepend-path LDFLAGS           "-L${PCRE2_DIR}/lib"
 MODULE_FILE
 ) > modules/$VERSION
 
