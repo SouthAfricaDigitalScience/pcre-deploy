@@ -47,6 +47,7 @@ module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScien
 setenv PCRE_VERSION       $VERSION
 setenv PCRE_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(PCRE_DIR)/lib
+prepend-path PATH              $::env(PCRE_DIR)/bin
 prepend-path GCC_INCLUDE_DIR   $::env(PCRE_DIR)/include
 prepend-path CFLAGS            "-I${PCRE_DIR}/include"
 prepend-path LDFLAGS           "-L${PCRE_DIR}/lib"

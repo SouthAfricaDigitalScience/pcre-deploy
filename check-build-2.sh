@@ -29,6 +29,7 @@ module-whatis   "$NAME $VERSION."
 setenv       PCRE2_VERSION       $VERSION
 setenv       PCRE2_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(PCRE2_DIR)/lib
+prepend-path PATH              $::env(PCRE2_DIR)/bin
 prepend-path GCC_INCLUDE_DIR   $::env(PCRE2_DIR)/include
 prepend-path CFLAGS            "-I${PCRE2_DIR}/include"
 prepend-path LDFLAGS           "-L${PCRE2_DIR}/lib"
