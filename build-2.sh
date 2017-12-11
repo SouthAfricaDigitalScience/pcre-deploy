@@ -34,21 +34,22 @@ tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 mkdir -p ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cmake ../ -G"Unix Makefiles" \
-  -DCMAKE_EXE_LINKER_FLAGS_DEBUG="-L${NCURSES_DIR}/lib -L${READLINE_DIR} -lreadline -lncurses  " \
-  -DCMAKE_C_FLAGS="-I${READLINE_DIR}/include  -I${NCURSES_DIR}/include " \
-  -DCMAKE_SHARED_LINKER_FLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR}/lib -lreadline -lncurses -lhistory -ltinfo" \
+  -DCMAKE_EXE_LINKER_FLAGS_DEBUG="-L${NCURSES_DIR}/lib  -L${READLINE_DIR}/lib  -lncurses -lreadline" \
+  -DCMAKE_C_FLAGS="-I${READLINE_DIR}/include  -I${NCURSES_DIR}/include" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-L${NCURSES_DIR}/lib -L${READLINE_DIR}/lib -lncurses -lreadline  -lhistory" \
   -DCMAKE_INSTALL_PREFIX=$SOFT_DIR \
   -DBUILD_SHARED_LIBS=ON \
   -DBUILD_STATIC_LIBS=ON \
   -DPCRE2_BUILD_PCRE2_16=ON \
   -DPCRE2_BUILD_PCRE2_32=ON \
+  -DPCRE2_SUPPORT_UNICODE=ON \
+  -DPCRE2_SUPPORT_LIBREADLINE=OFF \
   -DBZIP2_INCLUDE_DIR=${BZLIB_DIR}/include \
   -DBZIP2_LIBRARY_RELEASE=${BZLIB_DIR}/lib/libbz2.so \
   -DNCURSES_LIBRARY=${NCURSES_DIR}/lib/libncurses.so \
   -DNCURSES_INCLUDE_DIR=${NCURSES_DIR}/include \
   -DREADLINE_INCLUDE_DIR="${READLINE_DIR}/include" \
-  -DREADLINE_LIBRARY="${READLINE_DIR}/lib/libreadline.so ${NCURSES_DIR}/lib/ncurses.so" \
-  -DPCRE2_SUPPORT_LIBREADLINE=OFF \
+  -DREADLINE_LIBRARY="${READLINE_DIR}/lib/libreadline.so" \
+  -DPCRE2_SUPPORT_LIBREADLINE=ON \
   -DPCRE2_SUPPORT_LIBBZ2=ON
-
  make

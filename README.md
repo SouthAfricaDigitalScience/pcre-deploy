@@ -7,7 +7,8 @@ Build, test and deploy scripts for Perl Compatible Regular Expression
 
 We build
 
-  * 10.23
+  * 8.40 (pcre)
+  * 10.23 (pcre2)
 
 # Dependencies
 
